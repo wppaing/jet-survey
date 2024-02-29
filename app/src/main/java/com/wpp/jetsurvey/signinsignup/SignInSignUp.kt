@@ -97,7 +97,9 @@ fun OrSignInAsGuest(modifier: Modifier = Modifier) {
             modifier = Modifier.paddingFromBaseline(top = 25.dp)
         )
         OutlinedButton(
-            onClick = { /*TODO*/ },
+            onClick = {
+                print("Sign in as guest clicked")
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 20.dp, bottom = 24.dp),

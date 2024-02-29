@@ -22,7 +22,9 @@ import com.wpp.jetsurvey.R
 import com.wpp.jetsurvey.ui.theme.stronglyDeemphasizedAlpha
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    onNavigateToSignIn: (email: String) -> Unit
+) {
     Column(
         modifier = Modifier
             .background(Color.White)
@@ -30,6 +32,7 @@ fun WelcomeScreen() {
     ) {
         Branding()
         SignInCreateAccount(
+            onNavigateToSignIn = onNavigateToSignIn,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp)
@@ -69,7 +72,10 @@ private fun Branding(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun SignInCreateAccount(modifier: Modifier = Modifier) {
+private fun SignInCreateAccount(
+    onNavigateToSignIn: (email: String) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = stringResource(id = R.string.sign_in_create_account),
@@ -80,7 +86,9 @@ private fun SignInCreateAccount(modifier: Modifier = Modifier) {
         )
         Email()
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                onNavigateToSignIn("test@gmail.com")
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 28.dp, bottom = 3.dp)
@@ -97,5 +105,5 @@ private fun SignInCreateAccount(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun WelcomeScreenPreview() {
-    WelcomeScreen()
+    WelcomeScreen(onNavigateToSignIn = {})
 }
